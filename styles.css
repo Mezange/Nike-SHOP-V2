@@ -107,7 +107,7 @@ header
     width: 100%;
     background: var(--fourth-color);
     border-radius: 30px;
-    box-shadow: 0 0 1px  var(--first-color);
+    box-shadow: 0 0 3px  var(--first-color);
 }
  
 
@@ -153,6 +153,7 @@ header
     font-family: 'Poppins', sans-serif;
     color: var(--second-color);
     text-decoration: underline 2px;
+    text-underline-offset: 0.50rem;
 }
 
 #logohead{
@@ -302,7 +303,7 @@ header
 }
 
 .dark-mode{
-    width: 15%;
+    width: 20%;
     display: flex;
     align-items: center;
     font-family: 'Poppins', sans-serif;
@@ -312,59 +313,54 @@ header
     margin-left: 10%;
     margin-right:10%;
     padding:0;
-}
-
-.checkbox2 {
-	opacity: 0;
-	position: absolute;
-}
-
-.label2 {
-	background-color: var(--first-color);
-	border-radius: 50px;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 2px;
-	position: relative;
-	height: 16px;
-	width: 40px;
-	transform: scale(1.5);
-}
-
-.label2 .ball {
-	background-color: var(--fourth-color);
-	border-radius: 50%;
-	position: absolute;
-    align-items: center;
-	top: 2px;
-	left: 2px;
-	height: 16px;
-	width: 16px;
-	transform: translateX(0px);
-	transition: transform 0.2s linear;
-}
-
-.checkbox2:checked + .label2 .ball {
-	transform: translateX(24px);
+    transition: .4s ease;
 }
 
 
-.fa-moon {
-	color: var(--second-color);
-    padding-right: 1px;
+/* Styling the checkbox input */
+#checkbox{
+    position: relative;
+   
+    appearance: none;
+    -webkit-appearance : none;
+    -moz-appearance : none;
+    -o-appearance : none;
+    width: 42px;
+    height: 22px;
+    background: var(--first-color);
+    border-radius: 22px;
+    cursor: pointer;
+    outline: none;
+}
+/* styling the circle inside the checkbox input */
+#checkbox::before{
+    content: '';
+    position: absolute;
+    width: 17.5px;
+    height: 17.5px;
+    background-color:white;
+    border-radius: 35px;
+    top: 2px;
+    left: 2px;
+    cursor: pointer;
+    transition: .3s linear;
 }
 
-.fa-sun {
-	color: var(--fourth-color);
-    padding-left: 5px;
+/* Switching to the dark when the checkbox is toggled */
+#checkbox:checked + .dark-mode{
+    background: var(--first-color);
+    color: white;
+}
+  /* moving the checkbox circle when it's toggled by the user */
+#checkbox:checked::before{
+      left: 23px;
+      transition: .3s linear;
+}
+  /* changing the color of the checkbox when it's toggled */
+#checkbox:checked{
+      background: var(--second-color);
 }
 
-
-
-
-  
 .reduction {
     display: flex;
     width: 50%;
@@ -640,35 +636,44 @@ section{
     box-shadow: 0 0 3px  var(--first-color);
 }
 
+
 .bigproduct {
     width: 100%;
     border-radius: 30px;
-    margin-top: 2%;
     align-items:center;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 5%;
 }
 
 .bigproduct img{
-    width: 90%;
-    margin: 1%;
+    width: 100%;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
 }
 
-.smallproduct {
-    width: 100%;
+.second_picture{
+    width: 49%;
     border-radius: 30px;
-    margin-bottom: 2%;
-
     align-items:center;
     justify-content: center;
     flex-wrap: nowrap;
+    margin-bottom: 5%;
+    margin-top: 2%;
 }
 
-.smallproduct img{
-    width: 40%;
-    margin: 1%;
+.second_picture img{
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+}
+
+.image-2{
+    margin-right: 4%;
+}
+
+.bigproduct img{
+    width: 90%;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
 }
@@ -855,6 +860,7 @@ input:checked + .hearth {
 .zoneCOLOR{
     border-top: 2px solid var(--third-color);
     margin-top: 4%;
+    border-bottom: 2px solid var(--third-color);
 }
 
 .zoneCOLOR h1{
@@ -862,15 +868,15 @@ input:checked + .hearth {
     font-size: 18px;
     line-height: 20px;
     font-weight:600;
+    margin-bottom: 4%;
 }
 
 .COLOR{
     width: 100%;
     align-items:center;
     justify-content:center;
-
+    max-height: 50px;
     margin-bottom: 4%;
-    border-bottom: 2px solid var(--third-color);
 }
 
 .colorBROWN{
@@ -1031,14 +1037,15 @@ input:checked + .hearth {
     width: 100%;
     height: 100%;
     background: var(--second-color);
-    clip-path: circle(150px at 80% 20%);
-    transition: 0.5s ease-in-out;
+    clip-path: circle(150px at 80% 5%);
+    transition: 1s ease-in-out;
 
   
 }
   
 .cardcontainer .card:hover:before{
     clip-path: circle(300px at 80% -20%); 
+    transition: 0.75s ease-in-out;
    
 }
   
@@ -1049,7 +1056,8 @@ input:checked + .hearth {
     left: -20%;
     font-size: 12em;
     font-weight: 800;
-    color: rgba(255,255,25,0.05)
+    color: rgba(255,255,25,0.05);
+    transition: 1.5s ease-in-out;
 }
 
 .cardcontainer .card:hover:after{
@@ -1059,7 +1067,8 @@ input:checked + .hearth {
     left: -20%;
     font-size: 12em;
     font-weight: 800;
-    color: rgba(255,255,25,0.05)
+    color: rgba(255,255,25,0.03);
+    transition: 1.5s ease-in-out;
 
 }
   
